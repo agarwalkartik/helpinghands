@@ -48,7 +48,6 @@ const Index = ({ posts }) => {
   const [open, setOpen] = useState(false);
   const [detailPost, setDetailPost] = useState({});
   const router = useRouter();
-  console.log(router.query);
   const notify = useCallback((type, message) => {
     toast({ type, message });
   }, []);
@@ -60,11 +59,11 @@ const Index = ({ posts }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     let query = encodeURIComponent(JSON.stringify(form));
-    window.location.href = "http://helpinghands.com:3000/?query=" + query;
+    window.location.href = `${window.location.origin}?query=` + query;
   };
   const handleClear = (e) => {
     e.preventDefault();
-    window.location.href = "http://helpinghands.com:3000/";
+    window.location.href = window.location.origin;
   };
   const handlevote = async (postId, type) => {
     if (!session) {
@@ -115,9 +114,8 @@ const Index = ({ posts }) => {
     });
   };
   // useEffect(() => {
-  //   // console.log("sd");
   //   // let query = encodeURIComponent(JSON.stringify(form));
-  //   // window.location.href = "http://helpinghands.com:3000/?query=" + query;
+  //   // window.location.href = "window.location.origin/?query=" + query;
   // }, [form.page]);
   const handlePageChange = (e, d) => {
     e.preventDefault();
@@ -326,7 +324,7 @@ const Index = ({ posts }) => {
                               }
                             }}
                           >
-                            Upvote ({post.upVoteCount})
+                            &nbsp;&nbsp;Upvote ({post.upVoteCount})
                           </Button>
                           <Button
                             basic

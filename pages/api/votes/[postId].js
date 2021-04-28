@@ -13,7 +13,6 @@ export default async function handler(req, res) {
           throw new Error("User not found");
         }
         const { postId, type } = req.query;
-        console.log(session.user);
         const post = await Post.findById(postId);
         if (
           post &&
@@ -31,7 +30,6 @@ export default async function handler(req, res) {
         }
         res.status(201).json({ success: true });
       } catch (error) {
-        console.log(error);
         res.status(400).json({ success: false });
       }
       break;
