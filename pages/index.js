@@ -389,7 +389,7 @@ const Index = ({ posts }) => {
                         )} */}
                       </List>
                     )}
-                    {post.isVerfied && (
+                    {post.isVerified && (
                       <div>
                         <List bulleted horizontal>
                           <List.Item>
