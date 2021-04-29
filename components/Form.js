@@ -48,6 +48,9 @@ const AppForm = ({ formId }) => {
         value = [...form.for];
       }
     }
+    if (name == "isVerified") {
+      value = data.checked;
+    }
     setForm({
       ...form,
       [name]: value,
@@ -266,6 +269,15 @@ const AppForm = ({ formId }) => {
           name="otherDetails"
           onChange={handleChange}
         />
+        <Form.Field>
+          <Form.Checkbox
+            name="isVerified"
+            onChange={handleChange}
+            value="true"
+            label="I have verified this personally"
+            error={!!errors.isVerified}
+          />
+        </Form.Field>
         <Button type="submit">Submit</Button>
       </Form>
       <p>{message}</p>

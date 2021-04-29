@@ -389,11 +389,11 @@ const Index = ({ posts }) => {
                         )} */}
                       </List>
                     )}
-                    {post.purpose == "provide" && (
+                    {post.isVerfied && (
                       <div>
                         <List bulleted horizontal>
                           <List.Item>
-                            Verified Personally{" "}
+                            Verified Personally
                             <Icon fitted color="green" name="check square" />
                           </List.Item>
                         </List>

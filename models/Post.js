@@ -18,6 +18,7 @@ const PostSchema = new mongoose.Schema(
     postedBy: { type: String, index: true },
     upVotes: { type: [String], index: true },
     downVotes: { type: [String], index: true },
+    isVerified: { type: Boolean, index: true },
   },
   {
     timestamps: true,
