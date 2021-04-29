@@ -393,7 +393,7 @@ const Index = ({ posts }) => {
                       <div>
                         <List bulleted horizontal>
                           <List.Item>
-                            Verified Personally
+                            Verified Personally{" "}
                             <Icon fitted color="green" name="check square" />
                           </List.Item>
                         </List>
