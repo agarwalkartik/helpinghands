@@ -1,8 +1,9 @@
 import { Provider } from "next-auth/client";
 import "./styles.css";
 import "semantic-ui-css/semantic.min.css";
-import { useEffect, useRouter } from "react";
+import { useEffect } from "react";
 import * as gtag from "../lib/gtag";
+import { useRouter } from "next/router";
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
