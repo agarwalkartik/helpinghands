@@ -24,6 +24,7 @@ export default class MyDocument extends Document {
           `,
             }}
           />
+          <title>Helping Hands</title>
         </Head>
         <body>
           <Main />
