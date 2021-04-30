@@ -276,18 +276,22 @@ const Index = ({ posts }) => {
                     {post.purpose == "request" ? "Needed" : "Available"}
                   </Label>
                   {/* <Table.Cell> */}
-                  <Card.Header> {post.contactName}</Card.Header>
+                  <Card.Header>
+                    {post.contactName} - {post.city}
+                  </Card.Header>
                   <Card.Description>
                     <List bulleted horizontal>
                       <List.Item as="a" href={`tel:${post.contactNumber}`}>
                         {post.contactNumber}
                       </List.Item>
-                      <List.Item
-                        as="a"
-                        href={`tel:${post.secondaryContactNumber}`}
-                      >
-                        {post.secondaryContactNumber}
-                      </List.Item>
+                      {post.secondaryContactNumber && (
+                        <List.Item
+                          as="a"
+                          href={`tel:${post.secondaryContactNumber}`}
+                        >
+                          {post.secondaryContactNumber}
+                        </List.Item>
+                      )}
                       <List.Item
                         as="a"
                         onClick={() => {
@@ -507,14 +511,15 @@ const Index = ({ posts }) => {
   );
 };
 
-export const getServerSideProps = async function ({ req, res }) {
+export const getServerSideProps = async function (context) {
+  const req = context.req;
+  const res = context.res;
+  let query = context.query;
   const session = await getSession({ req });
   await dbConnect();
-  let query = {};
-  if (req && req.query && req.query.query) {
-    query = JSON.parse(req.query.query);
+  if (query) {
+    query = JSON.parse(query.query);
   }
-
   /* find all the data in our database */
   let mongoQuery = {};
   if (query.purpose && query.purpose.length > 0) {
