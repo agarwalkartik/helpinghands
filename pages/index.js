@@ -521,7 +521,7 @@ export const getServerSideProps = async function (context) {
     try {
       query = JSON.parse(query.query);
     } catch (error) {
-      queru = {};
+      query = {};
     }
   }
   /* find all the data in our database */
