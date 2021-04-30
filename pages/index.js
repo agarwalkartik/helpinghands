@@ -518,7 +518,11 @@ export const getServerSideProps = async function (context) {
   const session = await getSession({ req });
   await dbConnect();
   if (query) {
-    query = JSON.parse(query.query);
+    try {
+      query = JSON.parse(query.query);
+    } catch (error) {
+      queru = {};
+    }
   }
   /* find all the data in our database */
   let mongoQuery = {};
